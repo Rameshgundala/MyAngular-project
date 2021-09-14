@@ -1,0 +1,12 @@
+<!--<app-uctwo-child #childcmp></app-uctwo-child>
+<div>
+    Counter value is: {{childcmp.counter}}
+</div>
+<button type="button" (click)="childcmp.incrementCounter()">Increment</button>
+<button type="button" (click)="childcmp.decrementCounter()">Decrement</button>-->
+<app-uctwo-child></app-uctwo-child>
+<div>
+    Counter value is: {{getCounter()}}
+</div>
+<button type="button" (click)="increment()">Increment</button>
+<button type="button" (click)="decrement()">Decrement</button>

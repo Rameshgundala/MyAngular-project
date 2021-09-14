@@ -1,0 +1,53 @@
+<!--Attribute Directives (ngClass,ngStyle,ngModel)-->
+<div [ngClass]="{'borderClass':shouldBorderApplied}">
+       <p>ngClass attribute directive example...</p>
+</div>
+<div [ngStyle]="{'font-size':shouldBorderApplied?'50px':'25px'}">
+        <p>ngStyle attribute directive example...</p>
+</div>
+<div *ngIf="shouldBorderApplied" >
+           <p>Structural directive *ngIf example.....!</p>
+</div>
+<div class="course-available-static-list" appHighlighting>
+            <span>Static-Courses Available</span>
+            <ol>
+                <li>Angular</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>REACT</li>
+            </ol> 
+</div>
+<div> 
+        <ol>
+            <li *ngFor="let course of coursesAvailable" appHighlighting>
+                        {{course}}
+            </li>
+        </ol>
+</div>
+<div>
+        <select [(ngModel)]="courseSelected">
+            <option *ngFor="let courseAvailable of coursesAvailable">{{courseAvailable}}</option>
+        </select>
+        
+        <div [ngSwitch]="courseSelected">
+            <div *ngSwitchCase="'Angular'">
+                   Angular course Information
+            </div>
+            <div *ngSwitchCase="'CSS'">
+                    CSS course Information
+            </div>
+            <div *ngSwitchCase="'HTML'">
+                HTML course Information
+            </div>
+            <div *ngSwitchCase="'JAVA'">
+                JAVA course Information
+            </div>
+            <div *ngSwitchDefault>
+                SPRING course Information
+            </div>
+    
+        </div>
+    </div>
+    
+    <button type="button" (click)="shouldBorderApplied=!shouldBorderApplied">Toggle Flag</button>
+    

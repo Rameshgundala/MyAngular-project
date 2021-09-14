@@ -1,0 +1,51 @@
+<h3>List of Students Below</h3>
+<table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course Opted</th>
+                <th>Actions</th>
+            </tr>
+        <tr *ngFor="let student of students" [ngClass]="{'highlight-row':student.id===idSelected}">
+            <td><a [routerLink]="['/student-details',student.id]">{{student.id}}</a></td>
+            <td>{{student.name}}</td>
+            <td>{{student.courseOpted}}</td>
+            <td><button (click)="updateStudent(student)">Update</button></td>
+            <td><button (click)="deleteStudent(student)">Delete</button></td>
+        </tr>
+</table>
+
+<div>
+    <h3>Add or Update Student</h3>
+    <div>
+        <label>ID:</label>
+        <input type="text" name="id" [(ngModel)]="newStudent.id">
+    </div>
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" [(ngModel)]="newStudent.name">
+    </div>
+    <div>
+        <label>Course Opted:</label>
+        <input type="text" name="courseOpted" [(ngModel)]="newStudent.courseOpted">
+    </div>
+    <div>
+        <label>Address:</label>
+        <input type="text" name="address" [(ngModel)]="newStudent.address">
+    </div>
+    <div>
+        <label>Mobile:</label>
+        <input type="text" name="mobile" [(ngModel)]="newStudent.mobNum">
+    </div>
+    <div>
+        <label>Fee Paid:</label>
+        <input type="text" name="feePaid" [(ngModel)]="newStudent.feePaid">
+    </div>
+    <div>
+        <label>Fee Due:</label>
+        <input type="text" name="feeDue" [(ngModel)]="newStudent.feeDue">
+    </div>
+    <div>
+        <button type="button" (click)="saveOrUpdateStudent()">Save or Update Student</button>
+    </div>
+</div>

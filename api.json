@@ -1,0 +1,40 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "source",
+      "courseOpted": "react",
+      "feeDue": "10000",
+      "feePaid": "10000",
+      "address": "hyderabad",
+      "mobNum": "99999987"
+    },
+    {
+      "id": "2",
+      "name": "sri",
+      "courseOpted": "react",
+      "feeDue": "10000",
+      "feePaid": "10000",
+      "address": "hyderabad",
+      "mobNum": "99999987"
+    },
+    {
+      "id": "3",
+      "name": "ramesh1",
+      "courseOpted": "angular",
+      "feeDue": "999",
+      "feePaid": "10000",
+      "address": "hyderabad",
+      "mobNum": "999776454"
+    },
+    {
+      "id": "4",
+      "name": "rameshnew",
+      "courseOpted": "React",
+      "feeDue": "0",
+      "feePaid": "0",
+      "address": "New marutinagar",
+      "mobNum": "9912345"
+    }
+  ]
+}

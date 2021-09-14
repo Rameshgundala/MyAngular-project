@@ -1,0 +1,21 @@
+<form (ngSubmit)="saveData()">
+    <div>
+        <label>User Name:</label>
+        <input type="text" id="userName" [formControl]="userName">
+    </div>
+    <div>
+        <label>Location:</label>
+        <input type="text" id="location" [formControl]="location">
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" [formControl]="email">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+    <div>
+        <button type="submit" (click)="updateName()">Update</button>
+    </div>
+
+</form>

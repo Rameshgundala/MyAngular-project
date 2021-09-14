@@ -1,0 +1,29 @@
+<form [formGroup]="fg" (ngSubmit)="saveData()">
+    <div>
+        <label>User Name:</label>
+        <input type="text" id="userName" formControlName="userName" required>
+    </div>
+    <div *ngIf="userName.invalid &&this.fg.get('userName')?.touched">
+        {{userName.errors | json}}
+        <span *ngIf="userName.errors?.required">User Name is required</span>
+        <span *ngIf="userName.errors?.maxlength">User Name length should be {{userName.errors?.maxlength.requiredLength}} but you entered {{userName.errors?.maxlength.actualLength}}</span>
+    </div>
+    <div>
+        <label>Location:</label>
+        <input type="text" id="location" formControlName="location">
+    </div>
+    
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" formControlName="email">
+    </div>
+    <div *ngIf="email.invalid && email.touched">
+                {{email.errors | json}}
+               <span *ngIf="email.errors?.email">Need to provide correct email</span>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
+</form>
+

@@ -1,0 +1,7 @@
+<div>
+       <div>Courses Available:</div>
+        <ol>
+            <li *ngFor="let course of coursesAvailable">{{course}}</li>
+        </ol>
+ </div>
+<button type="button" (click)="saveCourses()">Save</button>

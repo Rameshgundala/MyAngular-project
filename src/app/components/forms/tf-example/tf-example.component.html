@@ -1,0 +1,39 @@
+<div>
+        <div><a routerLink="./childOne">Child One</a></div>
+        <div><a routerLink="./childTwo">Child Two</a></div>
+    </div>
+<form (ngSubmit)="logData()" #myForm="ngForm">
+    <div>
+        <label>User Name:</label>
+        <input type="text" id="userName" name="userName" [(ngModel)]="userName" required #unFcIn="ngModel">
+        <div *ngIf="unFcIn.invalid&&unFcIn.touched">
+            User Name is required!
+        </div>
+    </div>
+    <div>
+        <label>Location:</label>
+        <input type="text" id="location" name="location" [(ngModel)]="location" appTfCustomValidator fbName="Canada" #lcFcIn="ngModel">
+        <div *ngIf="lcFcIn.invalid&&lcFcIn.touched">
+            {{lcFcIn.errors?.forbiddenName}}
+        </div>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email">
+    </div>
+    <div>
+        <button type="submit" [disabled]="myForm.invalid">Submit</button>
+    </div>
+</form>
+<div *ngIf="shouldInfoDisplayed">
+    <div>
+        <label>User Name:</label> <span>{{userName}}</span>
+    </div>
+    <div>
+        <label>Location:</label> <span>{{location}}</span>
+    </div>
+    <div>
+        <label>Email:</label> <span>{{email}}</span>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,30 @@
+<div>
+    current Date w/o pipe Date:{{dateInfo}};
+</div>
+<div>
+    current Date with pipe Date:{{dateInfo | date:'shortDate'}};
+</div>
+<div>
+    current Date with pipe Date:{{dateInfo | date:'fullDate'}};
+</div>
+<div>
+        Uppercase Pipe: {{courseInSmallCase | uppercase}}
+ </div>
+ <!--Lowercase Pipe-->
+<div>
+        Lowercase Pipe: {{courseInUpperCase | lowercase }}
+    </div>
+    
+    <!--titlecase Pipe-->
+    <div>
+        Titlecase Pipe: {{courseInUpperCase | titlecase}}
+    </div>
+    
+    <!--Currency Pipe-->
+    <div>
+        Currency Pipe: {{currencyInfo | currency}}
+    </div>
+    <!--Custom Pipe-->
+    <div>
+       Custom Pipe: {{names | custom:'welcome to':' angualr course'}}
+    </div>

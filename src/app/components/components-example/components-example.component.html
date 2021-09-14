@@ -1,0 +1,31 @@
+<p>components-example works!</p>
+<ng-content></ng-content>
+Message: <span>{{greetingInfo}}</span>
+<div>
+<!--<input [(ngModel)]="greetingInfo">-->
+<input bindon-ngModel="greetingInfo">
+</div>
+<div>
+<button type="button" on-click="updateGreetingInfo()">Update</button>
+<button type="button" (click)="greetingInfo = 'Welcome to React Course'">Update Property</button>
+</div>
+<div id="course_available">
+    <ol>
+        <li>Angular</li>
+        <li>React</li>
+        <li>Javascript</li>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ol>
+</div >
+<div [class.borderClass]="shouldApplyClass" [style.color]='elementColor'> 
+    <ol>
+        <li *ngFor="let course of coursesAvailable;">{{course}}</li>
+    </ol>
+</div>
+<input type="text" id="course" value="Angular Course" #refVar>
+userName value: {{refVar.value}}
+<div><button type="button" (click)="refVar.value='React Course'">Update</button></div>
+<img [src]='imagePath'>
+<img bind-src='imagePath'>
+<ng-content></ng-content>

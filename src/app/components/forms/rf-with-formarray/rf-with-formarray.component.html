@@ -1,0 +1,27 @@
+<form [formGroup]="fg" (ngSubmit)="saveData()">
+    <div>
+        <label>User Name:</label>
+        <input type="text" id="userName" formControlName="userName">
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" formControlName="email">
+    </div>
+    <div formArrayName="address">
+        <div *ngFor="let formArrayFormGroup of addressFaControls" [formGroup]="formArrayFormGroup">
+            <div>
+                <label>Location:</label>
+                <input type="text" id="location" formControlName="location">
+            </div>
+            <div>
+                <label>Street Name:</label>
+                <input type="text" id="streetName" formControlName="streetName">
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+        <button type="button" (click)="addAddress()">Add Address</button>
+    </div>
+</form>
