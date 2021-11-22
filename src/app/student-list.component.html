@@ -1,0 +1,174 @@
+<h3>List of Students Below</h3>
+<div *ngIf="shouldshow">
+    <mat-spinner class="mx-auto"></mat-spinner>
+    </div>
+<div class="row">
+<div class="col-10 mx-auto">
+
+    <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Course Opted</th>
+                    <th>Actions</th>
+                </tr>
+            <tr *ngFor="let student of students" [ngClass]="{'highlight-row':student.id===idselected}">
+                <td><a [routerLink]="['/app-student-details',student.id]">{{student.id}}</a></td>
+                <td>{{student.name}}</td>
+                <td>{{student.courseOpted}}</td>
+                <td><button mat-raised-button color="primary" (click)="updatestudent(student)" data-bs-toggle="modal" data-bs-target="#exampleModal1">Update</button></td>
+                <td><button mat-raised-button color="accent" (click)="deletestudent(student)">Delete</button></td>
+            </tr>
+    </table>
+</div>
+</div>
+
+<!-- add modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    ADD USER
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formvalue" (ngSubmit)="sendstudent()"  class="form-group">
+            <div>
+              <label for="id">Id</label>
+              <input type="text" id="id" name="id" formControlName="id" class="form-control" >
+          </div>
+          
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="firstname" name="name" formControlName="name" class="form-control" required>
+          </div>
+          <div *ngIf="username()?.invalid && username()?.touched">
+            {{username().errors| json}}
+            <span *ngIf="username().errors?.required">username is required</span>
+            <span *ngIf="username().errors?.maxlength">username is must{{username().errors?.requiredLength}} but you entered {{username().errors?.actualLength}}</span>
+
+        </div>
+            <div>
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" formControlName="address" class="form-control">
+            </div>
+            <div>
+                <label for="courseOpted">CourseOpted</label>
+                <input type="text" id="courseOpted" name="courseOpted" formControlName="courseOpted"  class="form-control">
+            </div>
+            <div>
+                <label for="feePaid">feePaid</label>
+                <input type="number" id="feePaid" name="feePaid" formControlName="feePaid"  class="form-control">
+            </div>
+            <div>
+                <label for="feeDue">feeDue</label>
+                <input type="number" id="feeDue" name="feeDue" formControlName="feeDue"  class="form-control">
+            </div>
+            <div>
+                <label for="mobNum">mobNum</label>
+                <input type="number" id="mobNum" name="mobNum" formControlName="mobNum"  class="form-control">
+            </div>
+          
+            <div class="modal-footer">
+              <button type="button" #close id="close"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit"   class="btn btn-primary" >send-User</button>
+            </div>
+        </form> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- add modal -->
+
+  <!--EDIT Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formvalue" (ngSubmit)="updatedstudent()"  class="form-group">
+            <div>
+              <label for="id">Id</label>
+              <input type="text" id="id" name="id" formControlName="id" class="form-control" [disabled]="isDisabled">
+          </div>
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="firstname" name="name" formControlName="name" class="form-control">
+          </div>
+            <div>
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" formControlName="address" class="form-control">
+            </div>
+            <div>
+                <label for="courseOpted">CourseOpted</label>
+                <input type="text" id="courseOpted" name="courseOpted" formControlName="courseOpted"  class="form-control">
+            </div>
+            <div>
+                <label for="feePaid">feePaid</label>
+                <input type="number" id="feePaid" name="feePaid" formControlName="feePaid"  class="form-control">
+            </div>
+            <div>
+                <label for="feeDue">feeDue</label>
+                <input type="number" id="feeDue" name="feeDue" formControlName="feeDue"  class="form-control">
+            </div>
+            <div>
+                <label for="mobNum">mobNum</label>
+                <input type="number" id="mobNum" name="mobNum" formControlName="mobNum"  class="form-control">
+            </div>
+                
+            <div class="modal-footer">
+              <button type="button" #close id="close"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit"    class="btn btn-primary" >update-User</button>
+            </div>
+        </form> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+ <div class="row d-flex justify-content-center">
+   <div class="col-6" >
+    <div class="form">
+      <form (ngSubmit)="sendform()" #f="ngForm" CrossfieldtempvalidatorDirective>
+        <div class="mb-3">
+          <label for="username" class="form-label">username</label>
+          <input type="username" class="form-control" id="username" name="username" [(ngModel)]="user.usernames" #uname="ngModel" CustomtemplatevalidatotDirective="mahesh" 
+          [ngClass]="{'is-invalid': uname.invalid &&(uname.touched || uname.dirty&& f.submitted),
+          'is-valid':uname.valid &&(uname.touched || uname.dirty&& f.submitted)}" required minlength="3" maxlength="12">
+          <span class="text-danger" *ngIf="uname.invalid &&(uname.touched || uname.dirty&& f.submitted)&& uname.errors?.required">
+            username is required
+          </span>
+          <span class="text-muted" *ngIf="uname.invalid &&(uname.touched || uname.dirty&& f.submitted)&& uname.errors?.minlength">
+            username is exceeded maxlength
+          </span>
+          <span class="text-danger" *ngIf="uname.invalid &&(uname.touched || uname.dirty&& f.submitted)&& uname.errors?.isnamevalid">
+            username is must not mahesh
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="emails" class="form-label">email</label>
+          <input type="emails" class="form-control" id="emails" name="emails" [(ngModel)]="user.emails" #uemail="ngModel" required="required">
+          <span class="text-danger" *ngIf="uemail.invalid &&(uemail.touched || uemail.dirty&& f.submitted)&& uemail.errors?.email">
+            username is required
+          </span>
+        </div>
+        <span *ngIf="f.invalid&&(f.dirty||f.touched || f.submitted)&&f.errors?.crossfiledss">username and mail not start with ramesh</span>
+        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+   </div>
+ </div>
+  
+
+  

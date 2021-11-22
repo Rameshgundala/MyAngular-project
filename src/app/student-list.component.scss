@@ -1,0 +1,12 @@
+.highlight-row{
+    background-color: sandybrown;
+}
+input[class="ng-invalid ng-dirty" ]{
+    border: 2px solid red;
+}
+.is-invalid{
+    border: 2px solid red; 
+}
+.is-valid{
+    border: 2px solid rgb(16, 240, 128); 
+}
